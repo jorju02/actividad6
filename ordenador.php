@@ -68,6 +68,22 @@ class ordenador {
         
     }
 
+    public static function guardarSerializado($nombreFichero, $ordenadores){
+        // guardar coches en archivo
+        $s = serialize($ordenadores);
+        // almacenamos $s en algún lugar en el que page2.php puede encontrarlo.
+        file_put_contents($nombreFichero, $s);
+    }
+    
+    /*de un fichero con coches serializados guardado
+     devuelve un arrray de coches*/
+    public static function getOrdenaUnselizados($nombreFichero){
+        
+        $s = file_get_contents($nombreFichero);
+        $ordenadores = unserialize($s);
+        return $ordenadores;
+    }
+    
     
     
     
