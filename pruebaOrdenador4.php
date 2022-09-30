@@ -48,8 +48,8 @@ function eliminar($codHZ, $ordenadores,$ordenadorNuevo) {
 
 	<form>
 		<input name="sO" placeholder="sO"> <input name="codHZ"
-			placeholder="codHZ"> <input name="esSobremesa"
-			placeholder="esSobremesa"> <input type="submit" value="Guardar"> <input
+			placeholder="codHZ"> <input name="esSobremesa" type="checkbox"
+			value="esSobremesa">Sobremesa <input type="submit" value="Guardar"> <input
 			type="reset" value="Remove"> <input type="submit" value="Update">
 	</form>
 	<?php
@@ -58,13 +58,13 @@ $ordenadores = ordenador::getOrdenaUnselizados('ordenaGuar.txt');
 
 impOrdenadores($ordenadores);
 
-if (isset($_GET['sO']) && isset($_GET['codHZ']) && isset($_GET['esSobremesa'])) {
+if (isset($_GET['sO']) && isset($_GET['codHZ'])) {
     
     $sO = $_GET['sO'];
     $codHZ = $_GET['codHZ'];
-    $esSobremesa = $_GET['esSobremesa'];
-    
-    if ($sO != NULL && $codHZ != NULL && $esSobremesa != NULL) { // se ha rellenado el form
+    $esSobremesa = isset($_GET['esSobremesa']);
+   
+    if ($sO != NULL && $codHZ != NULL ) { // se ha rellenado el form
         // echo "se va ha crear el ordenador";
         
         $ordenadorNuevo = new ordenador($sO, $codHZ, $esSobremesa);
